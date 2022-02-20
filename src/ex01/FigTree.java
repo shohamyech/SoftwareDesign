@@ -4,23 +4,43 @@ public class FigTree extends Tree {
 
 
     FigTree(int height, Season season) {
-        // TODO: Implement.
         super(height,season,null);
+        this.leavesColor = switch (season)
+        {
+            case SPRING, SUMMER -> Color.GREEN;
+            case FALL -> Color.YELLOW;
+            case WINTER -> null; // Because no leaves
+        };
     }
 
     @Override
     public String toString() {
-        // TODO: Implement.
         String message = "FigTree. ";
         if (this.season == Season.SPRING)
-        {
             message += "I give fruit. ";
-        }
         message += super.toString();
+        if (season != Season.WINTER)
+            message += " and my color is: " + leavesColor;
+
         return message;
     }
     @Override
     public void changeSeason() {
-        // TODO: Implement.
+        season = season.next();
+        switch (season) {
+            case WINTER -> {
+                height += 20;
+                leavesColor = null;
+            }
+            case SPRING -> {
+                height += 30;
+                leavesColor = Color.GREEN;
+            }
+            case SUMMER -> height += 30;
+            case FALL -> {
+                height += 20;
+                leavesColor = Color.YELLOW;
+            }
+        }
     }
 }

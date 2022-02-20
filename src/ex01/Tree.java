@@ -26,6 +26,6 @@ public abstract class Tree implements Comparable, Seasonable {
 
     @Override
     public String toString() {
-        return "My height is: " + height + "and my color is: " + leavesColor;
+        return "My height is: " + height;
     }
 }

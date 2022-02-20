@@ -3,16 +3,14 @@ package ex01;
 public class Bear extends Animal {
 
     Bear(int weight, Season season) {
-        // TODO: Implement.
-        super(0,null,null);
+        super(weight,season,Color.BROWN);
     }
     @Override
     public String toString() {
-        // TODO: Implement.
-        return null;
+        return "Bear. " + super.toString();
     }
     @Override
     public void changeSeason() {
-        // TODO: Implement.
+        this.season = season.next();
     }
 }

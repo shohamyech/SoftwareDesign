@@ -1,8 +1,8 @@
 package ex01;
 
-public abstract class Animal implements Seasonable,Comparable{
+public abstract class Animal implements Seasonable, Comparable{
     protected int weight;
-    private Season season;
+    protected Season season;
     protected Color color;
     // TODO: Add auxiliary fields and functions.
 
@@ -20,6 +20,15 @@ public abstract class Animal implements Seasonable,Comparable{
     @Override
     public int compareTo(Object o) {
         // TODO: Implement.
-        return 0;
+        if (o == null) throw new NullPointerException();
+        if (o == this) return 0;
+        if (!(o instanceof Animal)) throw new ClassCastException();
+        return this.weight - ((Animal)o).weight;
+    }
+
+    @Override
+    public String toString() {
+        return "My weight is: " + weight +
+                " and my color is: " + color;
     }
 }

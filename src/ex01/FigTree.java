@@ -21,7 +21,8 @@ public class FigTree extends Tree {
         message += super.toString();
         if (season != Season.WINTER)
             message += " and my color is: " + leavesColor;
-
+        else
+            message += " and I have no leaves";
         return message;
     }
     @Override

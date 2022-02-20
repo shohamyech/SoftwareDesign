@@ -4,7 +4,7 @@ public abstract class Tree implements Comparable, Seasonable {
     protected int height;
     protected Season season;
     protected Color leavesColor;
-    // TODO: Add auxiliary fields and functions.
+
 
     Tree(int height, Season season, Color leavesColor){
         this.height = height;
@@ -19,7 +19,13 @@ public abstract class Tree implements Comparable, Seasonable {
 
     @Override
     public int compareTo(Object o) {
-        // TODO: Implement.
-        return 0;
+        if (o == null) throw new NullPointerException();
+        if (!(o instanceof Tree)) throw new ClassCastException();
+        return (this.height - ((Tree)o).height);
+    }
+
+    @Override
+    public String toString() {
+        return "My height is: " + height + "and my color is: " + leavesColor;
     }
 }

@@ -5,13 +5,19 @@ public class FigTree extends Tree {
 
     FigTree(int height, Season season) {
         // TODO: Implement.
-        super(0,null,null);
+        super(height,season,null);
     }
 
     @Override
     public String toString() {
         // TODO: Implement.
-        return null;
+        String message = "FigTree. ";
+        if (this.season == Season.SPRING)
+        {
+            message += "I give fruit. ";
+        }
+        message += super.toString();
+        return message;
     }
     @Override
     public void changeSeason() {

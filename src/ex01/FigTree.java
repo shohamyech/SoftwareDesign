@@ -15,13 +15,14 @@ public class FigTree extends Tree {
 
     @Override
     public String toString() {
-        String message = "FigTree. ";
-        if (this.season == Season.SPRING)
+        String message = "Fig tree. ";
+        if (this.season == Season.SUMMER)
             message += "I give fruit. ";
         message += super.toString();
         if (season != Season.WINTER)
             message += " and my color is: " + leavesColor;
-
+        else
+            message += " and I have no leaves";
         return message;
     }
     @Override

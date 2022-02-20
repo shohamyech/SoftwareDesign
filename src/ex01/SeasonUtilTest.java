@@ -67,7 +67,7 @@ public class SeasonUtilTest {
         for (int i = 0; i < TOTAL; i++) {
 
             if(i<4)
-                     animals[i] = new Caribou( rand(ANIMAL_MIN_INITIAL_WEIGHT, ANIMAL_MAX_INITIAL_WEIGHT), INITIAL_SEASON);
+                animals[i] = new Caribou( rand(ANIMAL_MIN_INITIAL_WEIGHT, ANIMAL_MAX_INITIAL_WEIGHT), INITIAL_SEASON);
             else
                 animals[i] = new Bear( rand(ANIMAL_MIN_INITIAL_WEIGHT, ANIMAL_MAX_INITIAL_WEIGHT), INITIAL_SEASON);
         }

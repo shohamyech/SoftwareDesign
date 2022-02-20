@@ -6,9 +6,9 @@ public abstract class Animal implements Seasonable, Comparable{
     protected Color color;
 
     Animal(int weight, Season season, Color color){
-        this.weight =weight;
-        this.season =season;
-        this.color =color;
+        this.weight = weight;
+        this.season = season;
+        this.color = color;
     }
 
     @Override

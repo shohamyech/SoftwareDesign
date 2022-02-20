@@ -5,11 +5,12 @@ public class FigTree extends Tree {
 
     FigTree(int height, Season season) {
         super(height,season,null);
-        this.leavesColor = switch (season)
+        switch (season)
         {
-            case SPRING, SUMMER -> Color.GREEN;
-            case FALL -> Color.YELLOW;
-            case WINTER -> null; // Because no leaves
+            case SPRING:
+            case SUMMER: this.leavesColor = Color.GREEN; break;
+            case FALL: this.leavesColor = Color.YELLOW; break;
+            case WINTER: this.leavesColor = null;// Because no leaves
         };
     }
 
@@ -25,23 +26,26 @@ public class FigTree extends Tree {
             message += " and I have no leaves";
         return message;
     }
+
     @Override
     public void changeSeason() {
         season = season.next();
         switch (season) {
-            case WINTER -> {
+            case WINTER:
                 height += 20;
                 leavesColor = null;
-            }
-            case SPRING -> {
+                break;
+            case SPRING:
                 height += 30;
                 leavesColor = Color.GREEN;
-            }
-            case SUMMER -> height += 30;
-            case FALL -> {
+                break;
+            case SUMMER:
+                height += 30;
+                break;
+            case FALL:
                 height += 20;
                 leavesColor = Color.YELLOW;
-            }
+                break;
         }
     }
 }

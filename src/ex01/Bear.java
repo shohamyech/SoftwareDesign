@@ -14,10 +14,10 @@ public class Bear extends Animal {
     @Override
     public void changeSeason() {
         season = season.next();
-        weight = (int)switch (season){
-            case WINTER ->  Math.floor(weight * 0.8);
-            case SPRING ->  Math.floor(weight * 0.75);
-            case SUMMER ->  Math.floor(weight * (1 + (1.0/3.0)));
-            case FALL   ->  Math.floor(weight * 1.25);};
+        switch (season){
+            case WINTER:  weight = (int)Math.floor(weight * 0.8); break;
+            case SPRING:  weight = (int)Math.floor(weight * 0.75);break;
+            case SUMMER:  weight = (int)Math.floor(weight * (1 + (1.0/3.0)));break;
+            case FALL:  weight = (int)Math.floor(weight * 1.25);};
     }
 }

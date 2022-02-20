@@ -21,8 +21,14 @@ public class OliveTree extends Tree {
     public void changeSeason() {
         season = season.next();
         switch (season) {
-            case WINTER, FALL -> height += 5;
-            case SPRING, SUMMER -> height += 10;
+            case WINTER:
+            case FALL:
+                height += 5;
+                break;
+            case SPRING:
+            case SUMMER:
+                height += 10;
+                break;
         }
     }
 }

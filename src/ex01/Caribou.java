@@ -25,8 +25,11 @@ public class Caribou extends Animal {
     }
 
     private Color getColorBySeason(Season season){
-        return switch (season){
-        case WINTER ->  Color.WHITE;
-        default -> Color.BROWN;};
+        switch (season) {
+            case WINTER:
+                return Color.WHITE;
+            default:
+                return Color.BROWN;
+        }
     }
 }

@@ -1,10 +1,8 @@
 package BL;
 
-import DL.Customer;
-import DL.Order;
-import DL.Product;
-import DL.ProductCategory;
+import DL.*;
 
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -18,19 +16,37 @@ import static java.util.stream.Collectors.*;
 public class BL implements IBL {
     @Override
     public Product getProductById(long productId) {
-        //To do
+        try {
+            return DataSource.readProductsfromFile()
+                    .stream()
+                    .filter(p -> p.getProductId() == productId)
+                    .findFirst()
+                    .orElse(null);
+        }catch (IOException ignored) {}
         return null;
     }
 
     @Override
     public Order getOrderById(long orderId) {
-        //To do
+        try {
+            return DataSource.readOrdersfromFile()
+                    .stream()
+                    .filter(p -> p.getOrderId() == orderId)
+                    .findFirst()
+                    .orElse(null);
+        }catch (IOException ignored) {}
         return null;
     }
 
     @Override
     public Customer getCustomerById(long customerId) {
-        //To do
+        try {
+            return DataSource.readCustomersfromFile()
+                    .stream()
+                    .filter(p -> p.getId() == customerId)
+                    .findFirst()
+                    .orElse(null);
+        }catch (IOException ignored) {}
         return null;
     }
 

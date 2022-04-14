@@ -3,9 +3,9 @@ package PL;
 import BL.IBL;
 import DL.ProductCategory;
 
-class Program
-{
-    public static void main(String args[]) {
+class Program {
+    public static void main(String[] args) {
+
 
         IBL myBl = new BL.BL();
 
@@ -38,7 +38,7 @@ class Program
         myBl.getOrderProducts(24L).forEach(System.out::print);
 
         System.out.println("---------getCustomersWhoOrderedProduct:--------");
-        myBl.getCustomersWhoOrderedProduct (18L).forEach(System.out::print);
+        myBl.getCustomersWhoOrderedProduct(18L).forEach(System.out::print);
 
         System.out.println("---------getMaxOrderedProduct:--------");
         myBl.getMaxOrderedProduct();

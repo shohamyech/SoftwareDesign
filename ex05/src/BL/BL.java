@@ -66,8 +66,7 @@ public class BL implements IBL {
     }
 
     @Override
-    public List<Product> getOrderProducts(long orderId)
-    {
+    public List<Product> getOrderProducts(long orderId) {
         //To do
         return null;
     }
@@ -84,6 +83,7 @@ public class BL implements IBL {
         return null;
 
     }
+
     @Override
     public double sumOfOrder(long orderID) {
         //To do

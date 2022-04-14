@@ -4,8 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static java.lang.Long.parseLong;
-
 public class Order {
 
     private long orderId;
@@ -13,16 +11,27 @@ public class Order {
     private Date deliveryDate;
     private OrderStatus status;
 
-    private long customrId;
+    private long costumerId;
 
-    public Order(String orderInfo)  {
-       //To Do
+    public Order(String orderInfo) {
+        String[] arrayOfArgs = orderInfo.split(" ");
+        setOrderId(Long.parseLong(arrayOfArgs[1]));
+        SimpleDateFormat parser = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            setOrderDate(parser.parse(arrayOfArgs[4]));
+        }
+        catch(ParseException e)
+        {
+            System.out.println("Bad date");
+        }
+        setStatus(OrderStatus.valueOf(arrayOfArgs[6]));
+        setCustomrId(Long.parseLong(arrayOfArgs[9]));
     }
 
-    public Order(long Oid, Date OorderDate, Date OdeliveryDate, OrderStatus Ostatus, long OcustomrId)
+    public Order(long Oid, Date ODate, Date OdeliveryDate, OrderStatus Ostatus, long OcustomrId)
     {
         setOrderId(Oid);
-        setOrderDate(OorderDate);
+        setOrderDate(ODate);
         setDeliveryDate(OdeliveryDate);
         setStatus(Ostatus);
         setCustomrId(OcustomrId);
@@ -69,10 +78,10 @@ public class Order {
     }
 
     public long getCustomrId() {
-        return customrId;
+        return costumerId;
     }
 
     public void setCustomrId(long customrId) {
-        this.customrId = customrId;
+        this.costumerId = customrId;
     }
 }

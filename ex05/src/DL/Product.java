@@ -1,32 +1,29 @@
 package DL;
 
-import static java.lang.Long.parseLong;
-
-public class Product
-{
+public class Product {
     private long ProductId;
     private String name;
     private ProductCategory category;
     private double price;
 
-    public Product(String orderInfo)
-    {
-        //To Do
+    public Product(String productInfo) {
+        String[] arrayOfArgs = productInfo.split(" ");
+        setProductId(Long.parseLong(arrayOfArgs[1]));
+        setName(arrayOfArgs[2]);
+        setCategory(ProductCategory.valueOf(arrayOfArgs[4]));
+        setPrice(Double.parseDouble(arrayOfArgs[6]));
     }
 
-    public Product(long PId, String Pname, ProductCategory Pcategory, double Pprice)
-    {
+    public Product(long PId, String Pname, ProductCategory Pcategory, double Pprice) {
         setProductId(PId);
         setName(Pname);
         setCategory(Pcategory);
         setPrice(Pprice);
-
     }
 
 
-    public String toString()
-    {
-        return "Product: "+ getProductId() + " "+ getName() +" category: "+ getCategory() + " price: "+ getPrice()+"\n";
+    public String toString() {
+        return "Product: " + getProductId() + " " + getName() + " category: " + getCategory() + " price: " + getPrice() + "\n";
     }
 
     public long getProductId() {

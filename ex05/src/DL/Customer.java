@@ -1,28 +1,26 @@
 package DL;
 
-import static java.lang.Integer.parseInt;
-import static java.lang.Long.parseLong;
 
 public class Customer {
     private long id;
     private String name;
     private int tier;
 
-    public Customer(String customerInfo)
-    {
-         //To Do
+    public Customer(String customerInfo) {
+        String[] arrayOfArgs = customerInfo.split(" ");
+        setId(Long.parseLong(arrayOfArgs[1]));
+        setName(arrayOfArgs[3]);
+        setTier(Integer.parseInt(arrayOfArgs[5]));
     }
 
-    public Customer(long Cid,String Cname, int Ctier)
-    {
+    public Customer(long Cid, String Cname, int Ctier) {
         setId(Cid);
         setName(Cname);
         setTier(Ctier);
     }
 
-    public String toString()
-    {
-        return "customer: "+ getId() + " name: "+ getName() +" tier: "+ getTier()+"\n";
+    public String toString() {
+        return "customer: " + getId() + " name: " + getName() + " tier: " + getTier() + "\n";
     }
 
     public long getId() {

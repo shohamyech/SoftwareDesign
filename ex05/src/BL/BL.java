@@ -22,7 +22,8 @@ public class BL implements IBL {
                     .filter(p -> p.getProductId() == productId)
                     .findFirst()
                     .orElse(null);
-        }catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         return null;
     }
 
@@ -34,7 +35,8 @@ public class BL implements IBL {
                     .filter(p -> p.getOrderId() == orderId)
                     .findFirst()
                     .orElse(null);
-        }catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         return null;
     }
 
@@ -46,7 +48,8 @@ public class BL implements IBL {
                     .filter(p -> p.getId() == customerId)
                     .findFirst()
                     .orElse(null);
-        }catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         return null;
     }
 

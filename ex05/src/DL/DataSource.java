@@ -17,23 +17,25 @@ public class DataSource {
     public static List<OrderProduct> allOrderProducts;
     // Update this path according to your data files location
     public static String basePath = "data\\";
-    public static String customersPath = basePath +"customers.txt";
-    public static String ordersPath = basePath +"orders.txt";
-    public static String productsPath = basePath +"products.txt";
-    public static String orderProductPath = basePath +"orderProduct.txt";
+    public static String customersPath = basePath + "customers.txt";
+    public static String ordersPath = basePath + "orders.txt";
+    public static String productsPath = basePath + "products.txt";
+    public static String orderProductPath = basePath + "orderProduct.txt";
 
-    static
-    {
+    static {
         try {
             allCustomers = readCustomersfromFile();
             allOrders = readOrdersfromFile();
             allProducts = readProductsfromFile();
             allOrderProducts = readOrderProductsfromFile();
-        } catch (IOException e) { e.printStackTrace(); }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
     public static List<Customer> readCustomersfromFile() throws IOException {
         return Files.lines(Paths.get(customersPath)).map(Customer::new).toList();
-   }
+    }
 
     public static List<Order> readOrdersfromFile() throws IOException {
         return Files.lines(Paths.get(customersPath)).map(Order::new).toList();

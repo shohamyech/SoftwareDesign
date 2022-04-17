@@ -4,6 +4,7 @@ import DL.*;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BL implements IBL {
     @Override
@@ -42,7 +43,7 @@ public class BL implements IBL {
                 .filter(p -> p.getCategory().equals(cat))
                 .filter(p -> p.getPrice() <= price)
                 .sorted(Comparator.comparing(Product::getProductId))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -52,7 +53,7 @@ public class BL implements IBL {
                 .filter(c -> c.getTier() == 3)
                 .filter(c -> getCustomerOrders(c.getId()).size() > 10)
                 .sorted(Comparator.comparing(Customer::getId))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -61,7 +62,7 @@ public class BL implements IBL {
                 .stream()
                 .filter(o -> o.getCustomrId() == customerId)
                 .sorted(Comparator.comparing(Order::getOrderId))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -78,7 +79,7 @@ public class BL implements IBL {
                 .stream()
                 .filter(p -> getOrdersOfProduct(p.getProductId()).size() >= orderedtimes)
                 .sorted(Comparator.comparing(Product::getProductId))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -88,7 +89,7 @@ public class BL implements IBL {
                 .filter(op -> op.getOrderId() == orderId)
                 .map(op -> getProductById(op.getProductId()))
                 .sorted(Comparator.comparing(Product::getProductId))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -97,7 +98,7 @@ public class BL implements IBL {
                 .stream()
                 .map(o -> getCustomerById(o.getCustomrId()))
                 .sorted(Comparator.comparing(Customer::getId))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -125,7 +126,7 @@ public class BL implements IBL {
                 .stream()
                 .filter(o -> sumOfOrder(o.getOrderId()) >= price)
                 .sorted(Comparator.comparing(Order::getOrderId))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -140,7 +141,7 @@ public class BL implements IBL {
                 .stream()
                 .filter(c -> c.getTier() == 3)
                 .filter(c -> getCustomerOrders(c.getId()).size() == maxOrders)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     private List<Order> getOrdersOfProduct(long productId) {
@@ -148,6 +149,6 @@ public class BL implements IBL {
                 .stream()
                 .filter(op -> op.getProductId() == productId)
                 .map(op -> getOrderById(op.getOrderId()))
-                .toList();
+                .collect(Collectors.toList());
     }
 }

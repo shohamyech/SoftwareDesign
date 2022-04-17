@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -32,26 +33,26 @@ public class DataSource {
     }
 
     public static List<Customer> readCustomersFromFile() throws IOException {
-        try(Stream<String> stream = Files.lines(Paths.get(customersPath))){
-            return stream.map(Customer::new).toList();
+        try (Stream<String> stream = Files.lines(Paths.get(customersPath))) {
+            return stream.map(Customer::new).collect(Collectors.toList());
         }
     }
 
     public static List<Order> readOrdersFromFile() throws IOException {
-        try(Stream<String> stream = Files.lines(Paths.get(ordersPath))){
-            return stream.map(Order::new).toList();
+        try (Stream<String> stream = Files.lines(Paths.get(ordersPath))) {
+            return stream.map(Order::new).collect(Collectors.toList());
         }
     }
 
     public static List<Product> readProductsFromFile() throws IOException {
-        try(Stream<String> stream = Files.lines(Paths.get(productsPath))){
-            return stream.map(Product::new).toList();
+        try (Stream<String> stream = Files.lines(Paths.get(productsPath))) {
+            return stream.map(Product::new).collect(Collectors.toList());
         }
     }
 
     public static List<OrderProduct> readOrderProductsFromFile() throws IOException {
-        try(Stream<String> stream = Files.lines(Paths.get(orderProductPath))){
-            return stream.map(OrderProduct::new).toList();
+        try (Stream<String> stream = Files.lines(Paths.get(orderProductPath))) {
+            return stream.map(OrderProduct::new).collect(Collectors.toList());
         }
     }
 }

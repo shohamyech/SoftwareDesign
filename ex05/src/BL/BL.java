@@ -5,13 +5,6 @@ import DL.*;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import static java.util.Collections.reverseOrder;
-import static java.util.Map.Entry.comparingByValue;
-import static java.util.function.UnaryOperator.identity;
-import static java.util.stream.Collectors.*;
 
 public class BL implements IBL {
     @Override
@@ -22,7 +15,9 @@ public class BL implements IBL {
                     .filter(p -> p.getProductId() == productId)
                     .findFirst()
                     .orElse(null);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+            System.out.println("IDIOT");
+        }
         return null;
     }
 
@@ -34,7 +29,8 @@ public class BL implements IBL {
                     .filter(o -> o.getOrderId() == orderId)
                     .findFirst()
                     .orElse(null);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         return null;
     }
 
@@ -46,7 +42,8 @@ public class BL implements IBL {
                     .filter(p -> p.getId() == customerId)
                     .findFirst()
                     .orElse(null);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         return null;
     }
 
@@ -100,7 +97,8 @@ public class BL implements IBL {
                     .findFirst()
                     .get()
                     .getQuantity();
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         return 0;
     }
 
@@ -126,7 +124,8 @@ public class BL implements IBL {
                     .map(op -> getProductById(op.getProductId()))
                     .sorted(Comparator.comparing(Product::getProductId))
                     .toList();
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         return null;
     }
 
@@ -142,39 +141,75 @@ public class BL implements IBL {
 
     @Override
     public Product getMaxOrderedProduct() {
-        //To do
+        try {
+            return DataSource.readOrderProductsfromFile()
+                    .stream()
+                    .max(Comparator.comparing(OrderProduct::getQuantity))
+                    .map(op -> getProductById(op.getProductId()))
+                    .get();
+        } catch (IOException ignored) {
+        }
         return null;
 
     }
 
     @Override
     public double sumOfOrder(long orderID) {
-        //To do
+        try {
+            return DataSource.readOrderProductsfromFile()
+                    .stream()
+                    .filter(o -> o.getOrderId() == orderID)
+                    .map(op -> op.getQuantity() * getProductById(op.getProductId()).getPrice())
+                    .reduce((cur, next) -> cur + next)
+                    .get();
+        } catch (IOException ignored) {
+        }
         return 0;
     }
 
     @Override
     public List<Order> getExpensiveOrders(double price) {
-        //To do
+        try {
+            return DataSource.readOrdersfromFile()
+                    .stream()
+                    .filter(o -> sumOfOrder(o.getOrderId()) >= price)
+                    .sorted(Comparator.comparing(Order::getOrderId))
+                    .toList();
+        } catch (IOException ignored) {
+        }
         return null;
     }
 
     @Override
     public List<Customer> ThreeTierCustomerWithMaxOrders() {
-        //To do
+        try{
+            int maxOrders = DataSource.readCustomersfromFile()
+                    .stream()
+                    .filter(c -> c.getTier() == 3)
+                    .max(Comparator.comparing(c -> getCustomerOrders(c.getId()).size()))
+                    .map(c -> getCustomerOrders(c.getId()).size())
+                    .get();
+            return DataSource.readCustomersfromFile()
+                    .stream()
+                    .filter(c -> c.getTier() == 3)
+                    .filter(c -> getCustomerOrders(c.getId()).size() == maxOrders)
+                    .toList();
+        }
+        catch (IOException ignored) {
+        }
         return null;
 
     }
 
-    public List<Order> getOrdersOfProduct(long productId)
-    {
+    private List<Order> getOrdersOfProduct(long productId) {
         try {
             return DataSource.readOrderProductsfromFile()
                     .stream()
                     .filter(op -> op.getProductId() == productId)
                     .map(op -> getOrderById(op.getOrderId()))
                     .toList();
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         return null;
     }
 

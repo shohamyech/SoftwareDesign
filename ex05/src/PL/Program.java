@@ -8,6 +8,9 @@ class Program {
 
 
         IBL myBl = new BL.BL();
+        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+
+        myBl.getProductById(495L);
 
         System.out.println("---------getProductById:--------");
         System.out.println(myBl.getProductById(495L));

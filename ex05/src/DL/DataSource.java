@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.io.IOException;
 
 
 public class DataSource {
@@ -38,15 +35,15 @@ public class DataSource {
     }
 
     public static List<Order> readOrdersfromFile() throws IOException {
-        return Files.lines(Paths.get(customersPath)).map(Order::new).toList();
+        return Files.lines(Paths.get(ordersPath)).map(Order::new).toList();
     }
 
     public static List<Product> readProductsfromFile() throws IOException {
-        return Files.lines(Paths.get(customersPath)).map(Product::new).toList();
+        return Files.lines(Paths.get(productsPath)).map(Product::new).toList();
     }
 
     public static List<OrderProduct> readOrderProductsfromFile() throws IOException {
-        return Files.lines(Paths.get(customersPath)).map(OrderProduct::new).toList();
+        return Files.lines(Paths.get(orderProductPath)).map(OrderProduct::new).toList();
     }
 }
 

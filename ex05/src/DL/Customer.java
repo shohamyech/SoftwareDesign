@@ -13,12 +13,6 @@ public class Customer {
         setTier(Integer.parseInt(arrayOfArgs[5]));
     }
 
-    public Customer(long Cid, String Cname, int Ctier) {
-        setId(Cid);
-        setName(Cname);
-        setTier(Ctier);
-    }
-
     public String toString() {
         return "customer: " + getId() + " name: " + getName() + " tier: " + getTier() + "\n";
     }

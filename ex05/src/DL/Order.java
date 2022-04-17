@@ -16,7 +16,7 @@ public class Order {
     public Order(String orderInfo) {
         String[] arrayOfArgs = orderInfo.split(" ");
         setOrderId(Long.parseLong(arrayOfArgs[1]));
-        SimpleDateFormat parser = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
         try {
             setOrderDate(parser.parse(arrayOfArgs[4]));
         }
@@ -24,8 +24,15 @@ public class Order {
         {
             System.out.println("Bad date");
         }
-        setStatus(OrderStatus.valueOf(arrayOfArgs[6]));
-        setCustomrId(Long.parseLong(arrayOfArgs[9]));
+        try {
+            setDeliveryDate(parser.parse(arrayOfArgs[7]));
+        }
+        catch(ParseException e)
+        {
+            System.out.println("Bad date");
+        }
+        setStatus(OrderStatus.valueOf(arrayOfArgs[9]));
+        setCustomrId(Long.parseLong(arrayOfArgs[12]));
     }
 
     public Order(long Oid, Date ODate, Date OdeliveryDate, OrderStatus Ostatus, long OcustomrId)

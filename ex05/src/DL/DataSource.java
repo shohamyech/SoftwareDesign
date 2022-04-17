@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 public class DataSource {
@@ -21,29 +22,37 @@ public class DataSource {
 
     static {
         try {
-            allCustomers = readCustomersfromFile();
-            allOrders = readOrdersfromFile();
-            allProducts = readProductsfromFile();
-            allOrderProducts = readOrderProductsfromFile();
+            allCustomers = readCustomersFromFile();
+            allOrders = readOrdersFromFile();
+            allProducts = readProductsFromFile();
+            allOrderProducts = readOrderProductsFromFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static List<Customer> readCustomersfromFile() throws IOException {
-        return Files.lines(Paths.get(customersPath)).map(Customer::new).toList();
+    public static List<Customer> readCustomersFromFile() throws IOException {
+        try(Stream<String> stream = Files.lines(Paths.get(customersPath))){
+            return stream.map(Customer::new).toList();
+        }
     }
 
-    public static List<Order> readOrdersfromFile() throws IOException {
-        return Files.lines(Paths.get(ordersPath)).map(Order::new).toList();
+    public static List<Order> readOrdersFromFile() throws IOException {
+        try(Stream<String> stream = Files.lines(Paths.get(ordersPath))){
+            return stream.map(Order::new).toList();
+        }
     }
 
-    public static List<Product> readProductsfromFile() throws IOException {
-        return Files.lines(Paths.get(productsPath)).map(Product::new).toList();
+    public static List<Product> readProductsFromFile() throws IOException {
+        try(Stream<String> stream = Files.lines(Paths.get(productsPath))){
+            return stream.map(Product::new).toList();
+        }
     }
 
-    public static List<OrderProduct> readOrderProductsfromFile() throws IOException {
-        return Files.lines(Paths.get(orderProductPath)).map(OrderProduct::new).toList();
+    public static List<OrderProduct> readOrderProductsFromFile() throws IOException {
+        try(Stream<String> stream = Files.lines(Paths.get(orderProductPath))){
+            return stream.map(OrderProduct::new).toList();
+        }
     }
 }
 

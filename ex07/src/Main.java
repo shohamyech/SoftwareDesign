@@ -47,10 +47,14 @@ public class Main {
         while (!(myString = scanner.nextLine()).equals("q")){
             switch (myString){
                 case "c":
-                    //TODO: Add counting behavior
+                    CountVisitor cv = new CountVisitor();
+                    root.accept(cv);
+                    System.out.print("Found " + cv.getNumOfFiles() + " files\n");
                     break;
                 case "sz":
-                    //TODO: Add size calculation behavior
+                    SizeVisitor sv = new SizeVisitor();
+                    root.accept(sv);
+                    System.out.print("the total size is " + sv.getTotalSize() + " bytes\n");
                     break;
                 case "st":
                     //TODO: Add statistics behavior

@@ -34,6 +34,10 @@ public class CountVisitor implements FileVisitor {
         numOfFiles += 1;
     }
 
+    @Override
+    public void visit(DirectoryDetails directoryDetails) {
+    }
+
     public int getNumOfFiles() {
         return numOfFiles;
     }

@@ -8,5 +8,5 @@ public interface FileVisitor {
     void visit(PptxFileDetails pptx);
     void visit(TxtFileDetails txt);
 
-    //void visit(DirectoryDetails directoryDetails);
+    void visit(DirectoryDetails directoryDetails);
 }

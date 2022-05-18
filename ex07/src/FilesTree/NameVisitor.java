@@ -1,43 +1,38 @@
 package FilesTree;
 
-public class SizeVisitor implements FileVisitor{
-    private int totalSize = 0;
-
+public class NameVisitor implements FileVisitor{
     @Override
     public void visit(HtmlFileDetails html) {
-        totalSize += html.getSize();
+        System.out.println(html.getName());
     }
 
     @Override
     public void visit(DocxFileDetails docx) {
-        totalSize += docx.getSize();
+        System.out.println(docx.getName());
     }
 
     @Override
     public void visit(JpgFileDetails jpg) {
-        totalSize += jpg.getSize();
+        System.out.println(jpg.getName());
     }
 
     @Override
     public void visit(Mp3FileDetails mp3) {
-        totalSize += mp3.getSize();
+        System.out.println(mp3.getName());
     }
 
     @Override
     public void visit(PptxFileDetails pptx) {
-        totalSize += pptx.getSize();
+        System.out.println(pptx.getName());
     }
 
     @Override
     public void visit(TxtFileDetails txt) {
-        totalSize += txt.getSize();
+        System.out.println(txt.getName());
     }
 
     @Override
-    public void visit(DirectoryDetails directoryDetails) {
-    }
-
-    public int getTotalSize() {
-        return totalSize;
+    public void visit(DirectoryDetails directory) {
+        System.out.println(directory.getName());
     }
 }

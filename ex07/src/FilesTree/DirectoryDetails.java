@@ -15,7 +15,7 @@ public class DirectoryDetails extends FileDetails {
     public void accept(FileVisitor visitor) {
         for (FileDetails file : files)
             file.accept(visitor);
-        //visitor.visit(this);
+        visitor.visit(this);
     }
 
     public void addFile(FileDetails fileDetails){

@@ -57,10 +57,10 @@ public class Main {
                     System.out.print("the total size is " + sv.getTotalSize() + " bytes\n");
                     break;
                 case "st":
-                    //TODO: Add statistics behavior
+                    root.accept(new StatisticsVisitor());
                     break;
                 case "sh":
-                    //TODO: Add short representation behavior
+                    root.accept(new NameVisitor());
             }
         }
     }

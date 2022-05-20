@@ -103,7 +103,7 @@ public class Main {
                 "ch: chips\n" +
                 "or: onion rings\n" +
                 "sa: salad\n" +
-                "fe: friedEgg");
+                "fe: fried egg");
 
         switch (scanner.nextLine())
         {

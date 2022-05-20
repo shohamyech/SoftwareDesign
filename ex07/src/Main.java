@@ -71,8 +71,16 @@ public class Main {
                 "sp: spicy\n" +
                 "la: lamb\n" +
                 "hm: homemade");
-        // TODO: Add a Hamburger Factory and use it to create a Hamburger
         Hamburger hamburger = null;
+        switch (scanner.nextLine())
+        {
+            case "cl":  hamburger = HamburgerFactory.createHamburger("cl"); break;
+            case "sp":  hamburger = HamburgerFactory.createHamburger("sp"); break;
+            case "la":  hamburger = HamburgerFactory.createHamburger("la"); break;
+            case "hm":  hamburger = HamburgerFactory.createHamburger("hm"); break;
+            default: System.out.println("Incorrect input!"); hamburgerMenu(scanner);
+        }
+
 
         String choice="";
         while (!choice.equals("s")) {
@@ -85,7 +93,6 @@ public class Main {
             }
             if (choice.equals("s")) {
                 System.out.println(hamburger.serve());
-
             }
         }
 
@@ -97,7 +104,14 @@ public class Main {
                 "or: onion rings\n" +
                 "sa: salad\n" +
                 "fe: friedEgg");
-        // TODO: Add a Hamburger-Topping Factory and use it to create a decorated Hamburger
+
+        switch (scanner.nextLine())
+        {
+            case "ch": return new ChipsDecorator(hamburger);
+            case "or": return new OnionDecorator(hamburger);
+            case "sa": return new SaladDecorator(hamburger);
+            case "fe": return new FriedEggDecorator(hamburger);
+        }
         return null;
     }
 }

@@ -1,6 +1,8 @@
 package sortingClean;
 
 public class BubbleSort implements SortingAlgorithm {
+
+    @Measurable
     public void sort(Comparable[] array) {
         int n = array.length;
         Comparable temp;

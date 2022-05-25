@@ -8,6 +8,7 @@ public class AlgorithmRunner {
     SortingAlgorithm<Integer> randomAlgorithm1 = makeRandomSortingAlgorithm();
     SortingAlgorithm<Integer> randomAlgorithm2 = makeRandomSortingAlgorithm();
     int numberOfElements = 10000;
+
     public void runAlgorithms(){
         Random rand = new Random();
         Integer[] ints = rand.ints(1,Integer.MAX_VALUE)
@@ -16,6 +17,7 @@ public class AlgorithmRunner {
                 .boxed()
                 .toArray(Integer[]::new);
         Integer[] intsClone = ints.clone();
+
         quadraticAlgorithm.sort(intsClone);
         intsClone = ints.clone();
         nlognAlgorithm.sort(intsClone);

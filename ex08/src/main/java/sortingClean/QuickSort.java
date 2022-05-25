@@ -46,6 +46,7 @@ public class QuickSort implements SortingAlgorithm {
             qsort(arr, pi+1, high);
         }
     }
+    @Measurable
     public void sort(Comparable[] array) {
         qsort(array, 0, array.length-1);
     }

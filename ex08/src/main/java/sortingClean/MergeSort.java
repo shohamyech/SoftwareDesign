@@ -1,6 +1,7 @@
 package sortingClean;
 
 public class MergeSort implements SortingAlgorithm {
+    @Measurable
     public void sort(Comparable[] array){
         mergeSort(array, array.length);
     }

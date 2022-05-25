@@ -1,4 +1,4 @@
-package com.example.aspecttest.student;
+package student;
 import javax.inject.Inject;
 
 public class Student {

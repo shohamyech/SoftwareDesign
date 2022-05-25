@@ -1,4 +1,4 @@
-package com.example.aspecttest.student;
+package student;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,7 +11,7 @@ public class Logging {
     @Pointcut("execution(* *.*.set*(..))")
     private void selectSetters(){}
 
-    @Pointcut("@annotation(Loggable) && execution(* *(..))")
+    @Pointcut("@annotation(student.Loggable) && execution(* *(..))")
     private void selectLoggable(){}
 
     @Before("selectSetters()")

@@ -1,4 +1,4 @@
-package com.example.aspecttest.student;
+package student;
 
 public class Dog implements Pet{
     @Override

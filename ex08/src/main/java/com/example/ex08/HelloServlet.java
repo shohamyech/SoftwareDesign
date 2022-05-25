@@ -1,4 +1,4 @@
-package com.example.aspecttest;
+package com.example.ex08;
 
 import java.io.*;
 import javax.servlet.http.*;

@@ -1,6 +1,8 @@
 package sortingClean;
 
 public class InsertionSort implements SortingAlgorithm {
+
+    @Measurable
     public void sort(Comparable[] array) {
         for (int i = 1; i<array.length; i++){
             Comparable key = array[i];

@@ -1,4 +1,4 @@
-package Observers;
+package WS1.Observers;
 
 public class LogPressObserver {
 }

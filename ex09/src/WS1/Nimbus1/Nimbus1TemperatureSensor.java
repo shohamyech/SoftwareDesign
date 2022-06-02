@@ -1,4 +1,4 @@
-package Nimbus1;
+package WS1.Nimbus1;
 
 public class Nimbus1TemperatureSensor {
 }

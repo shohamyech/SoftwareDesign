@@ -1,4 +1,11 @@
 package WS1.Observables;
 
-public class SensorAlarmListener {
+import WS1.Observers.Observer;
+
+public class SensorAlarmListener implements AlarmListener {
+
+    @Override
+    public void wakeup() {
+
+    }
 }

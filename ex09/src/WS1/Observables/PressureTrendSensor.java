@@ -41,7 +41,7 @@ public class PressureTrendSensor extends Observable<Trend> implements Observer<I
         lastReading3 = lastReading2;
         lastReading2 = lastReading1;
         lastReading1 = data;
-        if(count < 2)
+        if (count < 2)
             count++;
         else
             check();

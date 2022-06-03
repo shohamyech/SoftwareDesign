@@ -2,7 +2,7 @@ package WS1.Observers;
 
 import WS1.Nimbus1.Trend;
 
-public class LogPressTrendObserver implements Observer<Trend>{
+public class LogPressTrendObserver implements Observer<Trend> {
     public LogPressTrendObserver() {
         System.out.println("LogPressTrendObserver was created");
     }

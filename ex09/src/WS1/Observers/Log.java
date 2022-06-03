@@ -13,14 +13,12 @@ public class Log {
         displayPressureTrend();
     }
 
-    public void displayPressure()
-    {
+    public void displayPressure() {
         ws.addPressureObserver(new LogPressObserver());
         System.out.println("LogPressObserver observes pressure");
     }
 
-    public void displayPressureTrend()
-    {
+    public void displayPressureTrend() {
         ws.addPressureTrendObserver(new LogPressTrendObserver());
         System.out.println("LogPressTrendObserver observes pressure trend");
     }

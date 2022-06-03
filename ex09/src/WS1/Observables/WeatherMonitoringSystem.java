@@ -22,25 +22,21 @@ public class WeatherMonitoringSystem {
     }
 
     public static WeatherMonitoringSystem theInstance() {
-        if(instance == null)
-        {
+        if (instance == null) {
             instance = new WeatherMonitoringSystem();
         }
         return instance;
     }
 
-    public void addPressureObserver(Observer<Integer> observer)
-    {
+    public void addPressureObserver(Observer<Integer> observer) {
         pressureSensor.addObserver(observer);
     }
 
-    public void addPressureTrendObserver(Observer<Trend> observer)
-    {
+    public void addPressureTrendObserver(Observer<Trend> observer) {
         trendSensor.addObserver(observer);
     }
 
-    public void addTemperatureObserver(Observer<Integer> observer)
-    {
+    public void addTemperatureObserver(Observer<Integer> observer) {
         temperatureSensor.addObserver(observer);
     }
 }

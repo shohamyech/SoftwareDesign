@@ -2,7 +2,8 @@ package WS1.Nimbus1;
 
 import WS1.Observables.Sensor;
 
-import java.util.random.RandomGenerator;
+import java.util.Random;
+
 
 public class Nimbus1TemperatureSensor extends Sensor {
 
@@ -10,7 +11,7 @@ public class Nimbus1TemperatureSensor extends Sensor {
         super(type, interval);
     }
 
-    public static int boundedNextInt(RandomGenerator rng, int origin, int bound) {
+    public static int boundedNextInt(Random rng, int origin, int bound) {
         int r = rng.nextInt();
         if (origin < bound) {
             // It's not case (1).

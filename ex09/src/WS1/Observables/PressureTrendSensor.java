@@ -10,13 +10,14 @@ public class PressureTrendSensor extends Observable<Trend> implements Observer<I
     private int lastReading3;
     private Trend pressureState;
     private Trend lastState;
+    private int count = 0;
 
     public PressureTrendSensor(Nimbus1PressureSensor pressureSensor) {
         pressureSensor.addObserver(this);
+        System.out.println("PressureTrendSensor observes " + pressureSensor.type);
     }
 
-    public Trend calc()
-    {
+    public Trend calc() {
 
         if (lastReading1 < lastReading2 && lastReading2 < lastReading3)
             pressureState = Trend.FALLING;
@@ -26,10 +27,10 @@ public class PressureTrendSensor extends Observable<Trend> implements Observer<I
             pressureState = Trend.STABLE;
         return pressureState;
     }
+
     public void check() {
         pressureState = calc();
-        if (lastState != pressureState)
-        {
+        if (lastState != pressureState) {
             notifyObservers(pressureState);
             lastState = pressureState;
         }
@@ -40,6 +41,9 @@ public class PressureTrendSensor extends Observable<Trend> implements Observer<I
         lastReading3 = lastReading2;
         lastReading2 = lastReading1;
         lastReading1 = data;
-        check();
+        if(count < 3)
+            count++;
+        else
+            check();
     }
 }

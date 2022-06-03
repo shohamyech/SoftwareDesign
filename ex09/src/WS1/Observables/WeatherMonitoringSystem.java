@@ -15,8 +15,9 @@ public class WeatherMonitoringSystem {
     protected static WeatherMonitoringSystem instance = null;
 
     public WeatherMonitoringSystem() {
-        this.pressureSensor = new Nimbus1PressureSensor("Pressure Sensor", 1100);
-        this.temperatureSensor = new Nimbus1TemperatureSensor("Temperature Sensor", 700);
+        System.out.println("WeatherMonitoringSystem was created");
+        this.pressureSensor = new Nimbus1PressureSensor("pressure", 1100);
+        this.temperatureSensor = new Nimbus1TemperatureSensor("temperature", 700);
         this.trendSensor = new PressureTrendSensor(pressureSensor);
     }
 

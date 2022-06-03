@@ -12,6 +12,7 @@ public abstract class Sensor extends Observable<Integer>{
         this.interval = interval;
         this.type = type;
         Nimbus1Clock.theInstance().register(interval, this::check);
+        System.out.println(type + " registered to clock");
     }
 
     protected abstract int read();

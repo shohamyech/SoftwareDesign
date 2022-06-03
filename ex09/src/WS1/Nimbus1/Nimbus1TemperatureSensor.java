@@ -1,6 +1,5 @@
 package WS1.Nimbus1;
 
-import WS1.Observables.AlarmListener;
 import WS1.Observables.Sensor;
 
 public class Nimbus1TemperatureSensor extends Sensor {
@@ -11,6 +10,6 @@ public class Nimbus1TemperatureSensor extends Sensor {
 
     @Override
     protected int read() {
-        return RandomSupplier.getRnd().nextInt(0,40);
+        return RandomSupplier.getRnd().nextInt() % 40;
     }
 }
